@@ -30,10 +30,18 @@ Aplicação desenvolvida para o teste de **Desenvolvedor Front-end React** do Ma
 
 - Não consegui adicionar os testes por conta do prazo.
 
+## Fluxo de autenticação
+
+- /register → cria usuário (name, email, password, transactionPassword)
+
+- /login → retorna accessToken (JWT) + dados do usuário
+
+- Token é salvo no localStorage e enviado em todos os requests seguintes (Authorization: Bearer).
+
 ## ▶️ Rodar o projeto
 
 ```bash
-git clone https://github.com/seu-usuario/magnum-bank.git
+git clone https://github.com/devKaduu/magnum-bank-test.git
 cd magnum-bank
 npm install
 npm run dev
