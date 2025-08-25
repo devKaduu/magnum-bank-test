@@ -9,7 +9,7 @@ import { InputIcons } from "../../components/Form/Inputs/InputIcons";
 import { Label } from "../../components/Form/Label";
 import { ShowPasswordButton } from "../../components/Form/ShowPassowordButton";
 
-import { api } from "../../api/api";
+import { useAuth } from "../../context/AuthContext";
 import { maskCPF } from "../../utils/maskCpf";
 import type { RegisterForm } from "./props";
 
@@ -28,14 +28,12 @@ export function Register() {
 
   const cpfValue = watch("cpf") ?? "";
 
+  const { register: registerUser } = useAuth();
+
   const onSubmit = async (data: RegisterForm) => {
     setSubmitError(null);
     try {
-      await api.register({
-        name: data.name,
-        email: data.email,
-        password: data.password,
-      });
+      await registerUser(data.name, data.email, data.password);
 
       navigate("/", { replace: true });
     } catch (err: unknown) {
